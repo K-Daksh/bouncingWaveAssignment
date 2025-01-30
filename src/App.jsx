@@ -3,6 +3,7 @@ import BounceBox from "./components/BounceBox";
 import { ThemeProvider } from "styled-components";
 import Slider from "./components/Slider";
 import Navbar from "./components/Navbar";
+import SplineViewer from "./components/SplineViewer"; // Add this import
 
 function App() {
   const [totalColumns, setTotalColumns] = React.useState(20);
@@ -39,10 +40,7 @@ function App() {
 
         {/* Hero Section */}
         <div id="home" className="h-screen w-screen relative">
-          <spline-viewer
-            url="https://prod.spline.design/9T4QNtTDdCttd70D/scene.splinecode"
-            className="w-full h-full"
-          />
+          <SplineViewer />
         </div>
 
         {/* Divider Line */}
