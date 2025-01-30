@@ -1,8 +1,51 @@
-# React + Vite
+# 3D Portfolio Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive 3D portfolio viewer built with React, Vite, and Spline.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- Vite
+- Spline (3D viewer)
+- TailwindCSS
+- Jura Font Family
+
+## Prerequisites
+
+- Node.js 16+
+- npm or yarn
+
+## Local Development
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/K-Daksh/bouncingWaveAssignment
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run development server:
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`
+
+## Features
+
+- Interactive 3D scene viewing
+- Responsive design
+- Mobile fallback screen
+- Modern UI with TailwindCSS
+
+## Notes
+
+- Best viewed on desktop (width > 700px)
+- Mobile devices will see a fallback message
+- 3D content requires WebGL support
