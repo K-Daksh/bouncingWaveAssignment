@@ -14,12 +14,16 @@ function App() {
   const [green, setGreen] = React.useState(255);
   const [blue, setBlue] = React.useState(0);
   const [color, setColor] = React.useState("rgb(0, 255, 0)");
+  const [resetKey, setResetKey] = React.useState(0); // Add this line
 
   const defaultValues = {
     totalColumns: 20,
     totalRows: 15,
     trail: 5,
     colorChangeSpeed: 1,
+    red: 0,
+    green: 255,
+    blue: 0,
   };
 
   const handleReset = () => {
@@ -27,6 +31,10 @@ function App() {
     setTotalRows(defaultValues.totalRows);
     setTrail(defaultValues.trail);
     setColorChangeSpeed(defaultValues.colorChangeSpeed);
+    setRed(defaultValues.red);
+    setGreen(defaultValues.green);
+    setBlue(defaultValues.blue);
+    setResetKey((prev) => prev + 1); // Add this line
   };
 
   useEffect(() => {
@@ -90,13 +98,14 @@ function App() {
               onClick={handleReset}
               style={{ background: color }}
               className="mt-4 w-full px-4 py-2 bg-[rgba(64,47,181,0.3)] hover:bg-[rgba(64,47,181,0.5)] 
-                       text-white rounded-md transition-all duration-200 font-medium"
+                       text-white rounded-md transition-all duration-200 font-medium cursor-pointer"
             >
               Reset Values
             </button>
           </div>
           <div className="z-40">
             <BounceBox
+              key={resetKey} // Add this line
               totalColumns={totalColumns}
               totalRows={totalRows}
               trail={trail}
@@ -119,7 +128,7 @@ function App() {
             rel="noopener noreferrer"
             className="text-[#6f3eff] font-['Jura'] text-lg hover:text-indigo-800 transition-colors duration-300 flex items-center gap-2"
           >
-            Made with 💜 by Daksh Kitukale
+            Made by Daksh Kitukale
           </a>
         </footer>
       </div>

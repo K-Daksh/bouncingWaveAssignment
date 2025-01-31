@@ -32,15 +32,15 @@ const BounceBox = ({
       }
 
       // Color change logic
-      if (green > 0 && red === 0) {
-        setGreen(green - colorChangeSpeed);
-        setBlue(blue + colorChangeSpeed);
-      } else if (blue > 0 && green === 0) {
-        setBlue(blue - colorChangeSpeed);
-        setRed(red + colorChangeSpeed);
-      } else if (red > 0) {
-        setRed(red - colorChangeSpeed);
-        setGreen(green + colorChangeSpeed);
+      if (green > 0 && red === 0 && blue < 255) {
+        setGreen(Math.max(0, green - colorChangeSpeed));
+        setBlue(Math.min(255, blue + colorChangeSpeed));
+      } else if (blue > 0 && green === 0 && red < 255) {
+        setBlue(Math.max(0, blue - colorChangeSpeed));
+        setRed(Math.min(255, red + colorChangeSpeed));
+      } else if (red > 0 && green < 255) {
+        setRed(Math.max(0, red - colorChangeSpeed));
+        setGreen(Math.min(255, green + colorChangeSpeed));
       }
     }, 100);
 
