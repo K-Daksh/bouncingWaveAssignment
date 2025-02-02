@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BounceBox from "./components/BounceBox";
 import { ThemeProvider } from "styled-components";
 import Slider from "./components/Slider";
 import Navbar from "./components/Navbar";
 import SplineViewer from "./components/SplineViewer"; // Add this import
+import MobileFallback from "./components/MobileFallback";
 
 function App() {
   const [totalColumns, setTotalColumns] = React.useState(20);
@@ -41,23 +42,45 @@ function App() {
     setColor(`rgb(${red}, ${green}, ${blue})`);
   }, [red, green, blue]);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 700);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  if (isMobile) {
+    return <MobileFallback />;
+  }
+
   return (
     <ThemeProvider theme={{ red, green, blue }}>
-      <div className="h-screen w-screen bg-white">
+      <div
+        style={{
+          background: "linear-gradient(90deg, #020210 0%, #060224 100%)",
+        }}
+        className="h-screen w-screen"
+      >
         <Navbar />
 
         {/* Hero Section */}
-        <div id="home" className="h-screen w-screen relative">
+        <div id="home" className="h-screen w-full flex">
           <SplineViewer />
         </div>
 
         {/* Divider Line */}
-        <div className="w-full h-[1px] bg-gray-600 opacity-30" />
+        {/* <div className="w-full h-[1px] bg-gray-600 opacity-30" /> */}
 
         {/* Bouncing Box Section */}
         <div
           id="bounce"
-          className="flex w-screen h-screen flex-row justify-around items-center"
+          className="flex w-screen h-auto p-5 sm:p-8 flex-col sm:flex-row justify-around items-center"
           style={{
             background: "linear-gradient(90deg, #020210 0%, #060224 100%)",
           }}

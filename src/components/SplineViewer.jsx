@@ -26,10 +26,9 @@ const SplineViewer = () => {
     <>
       {isLoading && <Spinner />}
       <div
-        className={`cursor-pointer h-screen w-full ${
+        className={`cursor-pointer h-screen w-full scale-90 md:scale-90 ${
           isLoading ? "hidden" : "block"
         }`}
-        style={{ transform: "scale(0.8)" }}
       >
         <Spline
           scene="https://prod.spline.design/9T4QNtTDdCttd70D/scene.splinecode"
